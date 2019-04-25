@@ -60,9 +60,26 @@
 		<cfset assertEqualsCase("TheBigDog", inflector.CamelCase("TheBigDog"))>
 	</cffunction>
 
+	<!--- PascelCasing --->
+	<cffunction name="pascel_case_should_pascel_case_spaced_string">
+		<cfset assertEqualsCase("TheBigDog", inflector.PascelCase("the big dog"))>
+	</cffunction>
+	<cffunction name="pascel_case_should_pascel_case_underscored_string">
+		<cfset assertEqualsCase("TheBigDog", inflector.PascelCase("the_big_dog"))>
+	</cffunction>
+	<cffunction name="pascel_case_should_pascel_case_string_with_non_alpha_chars">
+		<cfset assertEqualsCase("TheBigDog", inflector.PascelCase("the{}{big^!*dog"))>
+	</cffunction>
+	<cffunction name="pascel_case_should_not_change_an_already_pascel_cased_string">
+		<cfset assertEqualsCase("TheBigDog", inflector.PascelCase("TheBigDog"))>
+	</cffunction>
+
 	<!--- variablising --->
 	<cffunction name="variablise_should_variablise_camel_cased_string">
 		<cfset assertEqualsCase("the_big_dog", inflector.variablise("TheBigDog"))>
+	</cffunction>
+	<cffunction name="variablise_should_variablise_pascel_cased_string">
+		<cfset assertEqualsCase("the_big_dog", inflector.variablise("theBigDog"))>
 	</cffunction>
 	<cffunction name="variablise_should_variablise_spaced_string">
 		<cfset assertEqualsCase("the_big_dog", inflector.variablise("The big dog"))>
@@ -83,6 +100,9 @@
 	<!--- humanising --->
 	<cffunction name="humanise_should_humanise_camel_cased_string">
 		<cfset assertEqualsCase("The Big Dog", inflector.humanise("TheBigDog"))>
+	</cffunction>
+	<cffunction name="humanise_should_humanise_pascel_cased_string">
+		<cfset assertEqualsCase("The Big Dog", inflector.humanise("theBigDog"))>
 	</cffunction>
 	<cffunction name="humanise_should_humanise_variablise_string">
 		<cfset assertEqualsCase("the big dog", inflector.humanise("the_big_dog"))>
