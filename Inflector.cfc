@@ -120,7 +120,6 @@
 		<cfreturn arguments.word>
 	</cffunction>
 
-
 	<!--- function for capitalising the first character of a string --->
 	<cffunction name="capitalise" access="public" returntype="string" output="no" hint="Capitalises the first character in a string">
 		<cfargument name="string" type="string" required="yes" hint="The string to capitalise">
@@ -128,9 +127,9 @@
 		<cfreturn ucase(left(arguments.string, 1)) & right(arguments.string, len(arguments.string)-1)>
 	</cffunction>
 
-	<!--- function for CamelCasing a string --->
-	<cffunction name="CamelCase" access="public" returntype="string" output="no" hint="Returns a given string, converted to CamelCase.  All non-alphanum characters are stripped.">
-		<cfargument name="string" type="string" required="yes" hint="The string to CamelCase">
+	<!--- function for PascalCasing a string --->
+	<cffunction name="PascalCase" access="public" returntype="string" output="no" hint="Returns a given string, converted to PascalCase.  All non-alphanum characters are stripped.">
+		<cfargument name="string" type="string" required="yes" hint="The string to PascalCase">
 		<cfset var str = "">
 		<cfset var i = 0>
 		<!--- split the string into tokens based on non-alphanum characters --->
@@ -142,8 +141,28 @@
 		<cfreturn str>
 	</cffunction>
 
+	<!--- function for CamelCasing a string --->
+	<cffunction name="camelCase" access="public" returntype="string" output="no" hint="Returns a given string, converted to camelCase.  All non-alphanum characters are stripped.">
+		<cfargument name="string" type="string" required="yes" hint="The string to camelCase">
+		<cfset var str = "">
+		<cfset var i = 0>
+		<!--- split the string into tokens based on non-alphanum characters --->
+		<cfset var tokens = trim(arguments.string).split("[^a-zA-Z0-9]")>
+		<cfloop from="1" to="#arraylen(tokens)#" index="i">
+			<!--- loop through each token and capitalise it --->
+			<cfif len(tokens[i])>
+				<cfif index === 1>
+					<cfset str = str & capitalise(tokens[i])>
+				<cfelse>
+					<cfset str = str & capitalise(tokens[i])>
+				</cfif>
+			</cfif>
+		</cfloop>
+		<cfreturn str>
+	</cffunction>
+
 	<!--- function for variablising a string --->
-	<cffunction name="variablise" access="public" returntype="string" output="no" hint="Converts a string to a variable name, e.g. CamelCase becomes camel_case, 'big CSSDogThing' becomes big_css_dog_thing etc.">
+	<cffunction name="variablise" access="public" returntype="string" output="no" hint="Converts a string to a variable name, e.g. PascalCase or camelCase becomes camel_case, 'big CSSDogThing' becomes big_css_dog_thing etc.">
 		<cfargument name="string" type="string" required="yes" hint="The string to variablise">
 		<cfset arguments.string = replace(trim(rereplace(arguments.string, "([^[:alnum:]_-]+)", " ", "ALL")), " ", "-", "ALL")>
 		<cfset arguments.string = rereplace(arguments.string, "([A-Z]+)([A-Z][a-z])", "\1_\2", "ALL")>
@@ -152,7 +171,7 @@
 	</cffunction>
 
 	<!--- function for humanising a string --->
-	<cffunction name="humanise" access="public" returntype="string" output="no" hint="Converts a string to a human-readable string, e.g. CamelCase becomes Camel Case, my_field_id becomes my_field etc.">
+	<cffunction name="humanise" access="public" returntype="string" output="no" hint="Converts a string to a human-readable string, e.g. PascalCase or camelCase becomes Camel Case, my_field_id becomes my_field etc.">
 		<cfargument name="string" type="string" required="yes" hint="The string to humanise">
 		<cfset arguments.string = replace(trim(rereplace(rereplace(arguments.string, "_id$", ""), "([^[:alnum:]_-]+)", " ", "ALL")), "_", " ", "ALL")>
 		<cfset arguments.string = rereplace(arguments.string, "([A-Z]+)([A-Z][a-z])", "\1 \2", "ALL")>
