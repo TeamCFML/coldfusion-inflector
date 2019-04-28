@@ -1,7 +1,7 @@
 # coldfusion-inflector
 
 This is a ColdFusion component which provides the ability to transform
-words from singular to plural (and back again), capitalises, CamelCases
+words from singular to plural (and back again), capitalises, PascalCase or CamelCases
 and humanises.  It is based on the Ruby on Rails
 [ActiveSupport::Inflector][rails-inflector] class.
 
@@ -32,23 +32,21 @@ Pluralisation and singularisation both take into account:
 
 * `capitalise` capitalises the first character in a string: `test`
   becomes `Test`
-* `CamelCase` converts a given string to CamelCase, with all
-  non-alphanumeric characters stripped: `camel_case` becomes `CamelCase`
+* `camelCase` converts a given string to CamelCase, with all
+  non-alphanumeric characters stripped: `camel_case` becomes `camelCase`
+* `PascalCase` converts a given string to PascalCase, with all
+  non-alphanumeric characters stripped: `pascal_case` becomes `PascalCase`
 * `variablise` converts a string to an underscore-separated list:
-  `CamelCase` becomes `camel_case`
+  `PascalCase` or `camelCase` becomes `camel_case`
 * `humanise` converts a string to a human-readable form:
-  `CamelCase` becomes `Camel Case`
+  `PascalCase` or `CamelCase` becomes `Camel Case`
 * `pad` pads a given string with spaces.
 
 See `test/tests/InflectorTest.cfc` for how other strings are handled.
 
 ## Licensing and Attribution
 
-coldfusion-inflector was developed by [Tim Blair][timblair] and is
+coldfusion-inflector was originally developed by [Tim Blair][timblair] and updated by [TeamCFML][teamCFML] and is
 released under the MIT license as detailed in the LICENSE file that
 should be distributed with this library; the source code is
-[freely available](http://github.com/timblair/coldfusion-inflector).
-
-[rails-inflector]: http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html
-[timblair]: http://tim.bla.ir/
-[cf-inflector]: http://github.com/timblair/coldfusion-inflector
+[freely available](https://github.com/TeamCFML/coldfusion-inflector).
