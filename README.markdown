@@ -1,6 +1,6 @@
 # CFML Inflector
 
-This is a ColdFusion component which provides the ability to transform
+This is a CFML (Lucee/Cold Fusion) component which provides the ability to transform
 words from singular to plural (and back again), capitalises, PascelCase or CamelCases
 and humanises.  It is based on the Ruby on Rails
 [ActiveSupport::Inflector][rails-inflector] class.
