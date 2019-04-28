@@ -1,4 +1,4 @@
-# coldfusion-inflector
+# CFML Inflector
 
 This is a ColdFusion component which provides the ability to transform
 words from singular to plural (and back again), capitalises, PascalCase or CamelCases
