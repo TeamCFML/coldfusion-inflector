@@ -1,7 +1,7 @@
 # CFML Inflector
 
 This is a ColdFusion component which provides the ability to transform
-words from singular to plural (and back again), capitalises, PascalCase or CamelCases
+words from singular to plural (and back again), capitalises, PascelCase or CamelCases
 and humanises.  It is based on the Ruby on Rails
 [ActiveSupport::Inflector][rails-inflector] class.
 
@@ -34,12 +34,12 @@ Pluralisation and singularisation both take into account:
   becomes `Test`
 * `camelCase` converts a given string to CamelCase, with all
   non-alphanumeric characters stripped: `camel_case` becomes `camelCase`
-* `PascalCase` converts a given string to PascalCase, with all
-  non-alphanumeric characters stripped: `pascal_case` becomes `PascalCase`
+* `PascelCase` converts a given string to PascelCase, with all
+  non-alphanumeric characters stripped: `pascal_case` becomes `PascelCase`
 * `variablise` converts a string to an underscore-separated list:
-  `PascalCase` or `camelCase` becomes `camel_case`
+  `PascelCase` or `camelCase` becomes `camel_case`
 * `humanise` converts a string to a human-readable form:
-  `PascalCase` or `CamelCase` becomes `Camel Case`
+  `PascelCase` or `CamelCase` becomes `Camel Case`
 * `pad` pads a given string with spaces.
 
 See `test/tests/InflectorTest.cfc` for how other strings are handled.
