@@ -45,6 +45,9 @@ See `test/tests/InflectorTest.cfc` for how other strings are handled.
 
 ## Licensing and Attribution
 
-coldfusion-inflector was originally developed by [Tim Blair](https://github.com/timblair) and has been added to and updated by [@TeamCFML](https://github.com/teamcfml), along with some further inflections merged from [@doctrine](http://www.github.com/doctrine/inflector/)
+inflector-cfml is the results of a combination of several inflector libraries on github including:
+
+* coldfusion-inflector was originally developed by [Tim Blair](https://github.com/timblair)
+* [doctrine inflector](http://www.github.com/doctrine/inflector/)
 
 Released under the MIT license as detailed in the LICENSE file that should be distributed with this library; the source code is [freely available](https://github.com/TeamCFML/coldfusion-inflector).
