@@ -30,23 +30,22 @@ Pluralisation and singularisation both take into account:
 
 ## Other String Functions
 
-* `capitalise` capitalises the first character in a string: `test`
-  becomes `Test`
-* `camelCase` converts a given string to CamelCase, with all
-  non-alphanumeric characters stripped: `camel_case` becomes `camelCase`
-* `PascelCase` converts a given string to PascelCase, with all
-  non-alphanumeric characters stripped: `pascal_case` becomes `PascelCase`
-* `variablise` converts a string to an underscore-separated list:
-  `PascelCase` or `camelCase` becomes `camel_case`
-* `humanise` converts a string to a human-readable form:
-  `PascelCase` or `CamelCase` becomes `Camel Case`
+* `capitalise` capitalises the first character in a string: `test` becomes `Test`
+  
+* `camelCase` converts a given string to camelCase, with all non-alphanumeric characters stripped: `camel_case` becomes `camelCase`
+  
+* `PascelCase` converts a given string to PascelCase, with all non-alphanumeric characters stripped: `pascal_case` becomes `PascelCase`
+
+* `variablise` converts a string to an underscore-separated list:  `PascelCase` or `camelCase` becomes `camel_case`
+
+* `humanise` converts a string to a human-readable form:  `PascelCase` or `CamelCase` becomes `Camel Case`
+
 * `pad` pads a given string with spaces.
 
 See `test/tests/InflectorTest.cfc` for how other strings are handled.
 
 ## Licensing and Attribution
 
-coldfusion-inflector was originally developed by [Tim Blair][timblair] and updated by [TeamCFML][teamCFML] and is
-released under the MIT license as detailed in the LICENSE file that
-should be distributed with this library; the source code is
-[freely available](https://github.com/TeamCFML/coldfusion-inflector).
+coldfusion-inflector was originally developed by [Tim Blair](https://github.com/timblair) and has been added to and updated by [@TeamCFML](https://github.com/teamcfml), along with some further inflections merged from [@doctrine](http://www.github.com/doctrine/inflector/)
+
+Released under the MIT license as detailed in the LICENSE file that should be distributed with this library; the source code is [freely available](https://github.com/TeamCFML/coldfusion-inflector).
