@@ -18,6 +18,25 @@
 	<cfset variables.uncountables = "">
 
 	<cfscript>
+
+		 // Pronouns.
+		 pronoun('I', 'we');
+		 pronoun('me', 'us');
+		 pronoun('he', 'they');
+		 pronoun('she', 'they');
+		 pronoun('them', 'them');
+		 pronoun('myself', 'ourselves');
+		 pronoun('yourself', 'yourselves');
+		 pronoun('itself', 'themselves');
+		 pronoun('herself', 'themselves');
+		 pronoun('himself', 'themselves');
+		 pronoun('themself', 'themselves');
+		 pronoun('is', 'are');
+		 pronoun('was', 'were');
+		 pronoun('has', 'have');
+		 pronoun('this', 'these');
+		 pronoun('that', 'those');
+
 		// singular -> plural rules (most generic first)
 		plural('$', 's');
 		plural('s$', 's');
@@ -41,6 +60,13 @@
 		plural('(quiz)$', '\1zes');
 		plural('(r|m|wom)en$', '\1en');
 		plural('(people)$', '\1');
+		
+		plural('deer$','\1');
+		plural('[^aeiou]ese$','\1');
+		plural('fish$','\1');
+		plural('pox$','\1');
+		plural('sheep$','\1');
+
 		// plural -> singular rules (most generic first)
 		singular('s$', '');
 		singular('(n)ews$', '\1ews');
@@ -48,8 +74,9 @@
 		singular('((a)naly|(b)a|(d)iagno|(p)arenthe|(p)rogno|(s)ynop|(t)he)s[ei]s$', '\1\2sis');
 		singular('(^analy)s[ei]s$', '\1sis');
 		singular('([^f])ves$', '\1fe');
-		singular('([ht]ive)s$', '\1');
+		singular('([dht]ive)s$', '\1');
 		singular('([lr])ves$', '\1f');
+		singular('([lr])ives$', '\1');
 		singular('([^aeiouy]|qu)ies$', '\1y');
 		singular('(s)eries$', '\1eries');
 		singular('(m)ovies$', '\1ovie');
@@ -58,8 +85,9 @@
 		singular('(bus)(es)?$', '\1');
 		singular('(o)es$', '\1');
 		singular('(shoe)s$', '\1');
-		singular('(cris|ax|test)[ei]s$', '\1is');
-		singular('(octop|vir)(i|us)$', '\1us');
+		singluar('(f)eet$','\1oot');
+		singular('(analys|ax|cris|test|thes)[ei]s$', '\1is');
+		singular('(alumn|bacill|cact|foc|fung|octop|nucle|radi|stimul|syllab|termin|viri)(i|us)$', '\1us');
 		singular('(alias|status)(es)?$', '\1');
 		singular('^(ox)en', '\1');
 		singular('(vert|ind)ices$', '\1ex');
@@ -67,25 +95,146 @@
 		singular('(quiz)zes$', '\1');
 		singular('(database)s$', '\1');
 		singular('(ess)$', '\1');
+
 		// irregulars (singular, plural)
 		irregular('person', 'people');
 		irregular('man', 'men');
+		irregular('woman', 'women');
 		irregular('child', 'children');
 		irregular('sex', 'sexes');
 		irregular('move', 'moves');
 		irregular('zombie', 'zombies');
 		irregular('safe', 'safes');
-		// uncountables (words that don't change)
+		irregular('me','us');
+		irregular('he','they');
+		irregular('she','they');
+		irregular('is','are');
+		irregular('stigma','stigmata');
+		
+	// Singular words with no plurals.
+		uncountable('adulthood');
+		uncountable('advice');
+		uncountable('agenda');
+		uncountable('aid');
+		uncountable('aircraft');
+		uncountable('alcohol');
+		uncountable('ammo');
+		uncountable('analytics');
+		uncountable('anime');
+		uncountable('athletics');
+		uncountable('audio');
+		uncountable('bison');
+		uncountable('blood');
+		uncountable('bream');
+		uncountable('buffalo');
+		uncountable('butter');
+		uncountable('carp');
+		uncountable('cash');
+		uncountable('chassis');
+		uncountable('chess');
+		uncountable('clothing');
+		uncountable('coal');
+		uncountable('cod');
+		uncountable('coitus')
+		uncountable('commerce');
+		uncountable('compensation')
+		uncountable('cooperation');
+		uncountable('corps');
+		uncountable('cotton');
+		uncountable('data');
+		uncountable('debris');
+		uncountable('deer');
+		uncountable('diabetes');
+		uncountable('digestion');
+		uncountable('education');
+		uncountable('elk');
+		uncountable('emoji');
+		uncountable('energy');
 		uncountable('equipment');
+		uncountable('evidence');
+		uncountable('excretion');
+		uncountable('expertise');
+		uncountable('feedback');
+		uncountable('firmware');
+		uncountable('flounder');
+		uncountable('flour');
+		uncountable('fun');
+		uncountable('furniture');
+		uncountable('gallows');
+		uncountable('garbage');
+		uncountable('gold');
+		uncountable('graffiti');
+		uncountable('hardware');
+		uncountable('headquarters');
+		uncountable('health');
+		uncountable('herpes');
+		uncountable('highjinks');
+		uncountable('homework');
+		uncountable('housework');
+		uncountable('impatience');
 		uncountable('information');
-		uncountable('rice');
-		uncountable('money');
-		uncountable('species');
-		uncountable('series');
-		uncountable('fish');
-		uncountable('sheep');
+		uncountable('innings');
 		uncountable('jeans');
+		uncountable('jedi');
+		uncountable('justice');
+		uncountable('knowledge');
+		uncountable('kudos');
+		uncountable('labour');
+		uncountable('leather');
+		uncountable('love');
+		uncountable('literature');
+		uncountable('luggage');
+		uncountable('machinery');
+		uncountable('mackerel');
+		uncountable('mail');
+		uncountable('media');
+		uncountable('metadata');
+		uncountable('mews');
+		uncountable('moose');
+		uncountable('mud');
+		uncountable('manga');
+		uncountable('music');
+		uncountable('news');
+		uncountable('nutrition');
+		uncountable('offspring');
+		uncountable('oil');
+		uncountable('only');
+		uncountable('patience');
+		uncountable('personnel');
+		uncountable('pike');
+		uncountable('plankton');
+		uncountable('pliers');
 		uncountable('police');
+		uncountable('pollution');
+		uncountable('premises');
+		uncountable('rain');
+		uncountable('research');
+		uncountable('rice');
+		uncountable('rinoceros');
+		uncountable('salmon');
+		uncountable('scissors');
+		uncountable('series');
+		uncountable('sewage');
+		uncountable('shambles');
+		uncountable('sheep');
+		uncountable('shrimp');
+		uncountable('software');
+		uncountable('staff');
+		uncountable('swine');
+		uncountable('talent');
+		uncountable('tennis');
+		uncountable('toothpaste');
+		uncountable('traffic');
+		uncountable('transportation');
+		uncountable('trout');
+		uncountable('tuna');
+		uncountable('wealth');
+		uncountable('welfare');
+		uncountable('whiting');
+		uncountable('wildebeest');
+		uncountable('wildlife')
+		uncountable('you')
+
 	</cfscript>
 
 	<!--- PUBLIC callable functions --->
