@@ -1,13 +1,3 @@
-<!---  -->
-<fusedoc fuse="restfulcf/framework/util/Inflector.cfc" language="ColdFusion" specification="2.0">
-	<responsibilities>
-		I am a CF version of portions of the Ruby on Rails Inflector class, specifically the
-		functions which provide the ability to generate singulars/plurals of given words,
-		plus some translation functions.
-	</responsibilities>
-</fusedoc>
---->
-
 <cfcomponent displayname="Inflector" output="no">
 
 	<!--- SETUP --->
