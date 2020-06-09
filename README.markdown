@@ -41,6 +41,10 @@ Pluralisation and singularisation both take into account:
 
 * `pad()` pads a given string with spaces or other characters.
 
+* `isPlural` returns true if the word is plural
+
+* `isSingular` returns if the word is singular
+
 See `test/tests/InflectorTest.cfc` for how other strings are handled.
 
 ## Licensing and Attribution
