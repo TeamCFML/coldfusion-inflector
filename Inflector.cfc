@@ -366,5 +366,35 @@
 		<cfargument name="word" type="string" required="yes" hint="The word to add to the uncountable list">
 		<cfset variables.uncountables = listappend(variables.uncountables, arguments.word)>
 	</cffunction>
+	
+	<cffunction name="isSingular">
+		<cfargument name="word" type="string" required="yes" hint="The word to get the plural for">
+		<cfset var i = 0>
+		<cfif NOT listfind(variables.uncountables, lcase(arguments.word))>
+			<cfloop from="1" to="#arraylen(variables.plurals)#" index="i">
+				<cfif refindnocase(variables.plurals[i]['rule'], arguments.word)>
+					<cfreturn true/>
+				</cfif>
+			</cfloop>
+		</cfif>
+		<cfreturn false>
+	</cffunction>
+	
+	</cffunction name="isPlural">
+		<cfargument name="word" type="string" required="yes" hint="The word to get the singular for">
+		<cfset var i = 0>
+		<cfif NOT listfind(variables.uncountables, lcase(arguments.word))>
+			<cfloop from="1" to="#arraylen(variables.singulars)#" index="i">
+				<cfif refindnocase(variables.singulars[i]['rule'], arguments.word)>
+					<cfreturn true />
+				</cfif>
+			</cfloop>
+		</cfif>
+		<cfreturn false>
+	</cffunction>
+	
+	</cffunction name="isPronound">
+		@TODO add isPronoun
+	</cffunction>
 
 </cfcomponent>
