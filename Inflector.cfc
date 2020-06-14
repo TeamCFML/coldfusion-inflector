@@ -3,6 +3,7 @@
 	<!--- SETUP --->
 
 	<cfset variables.plurals      = arraynew(1)>
+	<cfset variables.pronouns     = arraynew(1)>
 	<cfset variables.singulars    = arraynew(1)>
 	<cfset variables.irregulars   = arraynew(1)>
 	<cfset variables.uncountables = "">
@@ -75,7 +76,7 @@
 		singular('(bus)(es)?$', '\1');
 		singular('(o)es$', '\1');
 		singular('(shoe)s$', '\1');
-		singluar('(f)eet$','\1oot');
+		singular('(f)eet$','\1oot');
 		singular('(analys|ax|cris|test|thes)[ei]s$', '\1is');
 		singular('(alumn|bacill|cact|foc|fung|octop|nucle|radi|stimul|syllab|termin|viri)(i|us)$', '\1us');
 		singular('(alias|status)(es)?$', '\1');
@@ -233,10 +234,11 @@
 	<cffunction name="pluralise" access="public" returntype="string" output="no" hint="Returns the plural form of a word">
 		<cfargument name="word" type="string" required="yes" hint="The word to get the plural for">
 		<cfset var i = 0>
+		<cfset var pluralsandpronouns = variables.plural.append(variables.pronouns) />
 		<cfif NOT listfind(variables.uncountables, lcase(arguments.word))>
-			<cfloop from="1" to="#arraylen(variables.plurals)#" index="i">
-				<cfif refindnocase(variables.plurals[i]['rule'], arguments.word)>
-					<cfset arguments.word = rereplacenocase(arguments.word, variables.plurals[i]['rule'], variables.plurals[i]['replacement'])>
+			<cfloop from="1" to="#arraylen(pluralsandpronouns)#" index="i">
+				<cfif refindnocase(pluralsandpronounss[i]['rule'], arguments.word)>
+					<cfset arguments.word = rereplacenocase(arguments.word, pluralsandpronouns[i]['rule'], pluralsandpronouns[i]['replacement'])>
 					<cfbreak>
 				</cfif>
 			</cfloop>
@@ -343,6 +345,17 @@
 		<cfset arrayprepend(variables.plurals, pl)>
 	</cffunction>
 
+	<!--- function for specifying a new pluralisation rule and its replacement --->
+	<cffunction name="pronoun" access="private" returntype="void" output="no" hint="Specifies a new pluralisation rule and its replacement">
+		<cfargument name="rule" type="string" required="yes" hint="The regex rule to match">
+		<cfargument name="replacement" type="string" required="yes" hint="The replacement value to use for this rule">
+		<cfset var pr = structnew()>
+		<cfset pr.rule = arguments.rule>
+		<cfset pr.replacement = arguments.replacement>
+		<cfset arrayprepend(variables.pronouns, pr)>
+	</cffunction>
+
+
 	<!--- function for specifying a new singularisation rule and its replacement --->
 	<cffunction name="singular" access="private" returntype="void" output="no" hint="Specifies a new singularisation rule and its replacement">
 		<cfargument name="rule" type="string" required="yes" hint="The regex rule to match">
@@ -367,12 +380,13 @@
 		<cfset variables.uncountables = listappend(variables.uncountables, arguments.word)>
 	</cffunction>
 	
-	<cffunction name="isSingular">
+	<cffunction name="isSingular" access="public" returntype="boolean" output="no" hint="Checks if word is singular form">
 		<cfargument name="word" type="string" required="yes" hint="The word to get the plural for">
 		<cfset var i = 0>
+		<cfset var pluralsandpronouns = variables.plural.append(variables.pronouns) />
 		<cfif NOT listfind(variables.uncountables, lcase(arguments.word))>
-			<cfloop from="1" to="#arraylen(variables.plurals)#" index="i">
-				<cfif refindnocase(variables.plurals[i]['rule'], arguments.word)>
+			<cfloop from="1" to="#arraylen(pluralsandpronouns)#" index="i">
+				<cfif refindnocase(pluralsandpronouns[i]['rule'], arguments.word)>
 					<cfreturn true/>
 				</cfif>
 			</cfloop>
@@ -380,8 +394,8 @@
 		<cfreturn false>
 	</cffunction>
 	
-	</cffunction name="isPlural">
-		<cfargument name="word" type="string" required="yes" hint="The word to get the singular for">
+	<cffunction name="isPlural" access="public" returntype="boolean" output="no" hint="">
+		<cfargument name="word" type="string" required="yes" hint="Checks to see if word is in plural form">
 		<cfset var i = 0>
 		<cfif NOT listfind(variables.uncountables, lcase(arguments.word))>
 			<cfloop from="1" to="#arraylen(variables.singulars)#" index="i">
@@ -393,7 +407,7 @@
 		<cfreturn false>
 	</cffunction>
 	
-	</cffunction name="isPronound">
+	<cffunction name="isPronoun">
 		@TODO add isPronoun
 	</cffunction>
 
