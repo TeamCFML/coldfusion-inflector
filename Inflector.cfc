@@ -223,9 +223,8 @@
 		uncountable('welfare');
 		uncountable('whiting');
 		uncountable('wildebeest');
-		uncountable('wildlife')
-		uncountable('you')
-
+		uncountable('wildlife');
+		uncountable('you');
 	</cfscript>
 
 	<!--- PUBLIC callable functions --->
